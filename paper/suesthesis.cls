@@ -24,8 +24,7 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 \newcommand{\xiaowu}{\fontsize{9pt}{13.5pt}\selectfont}    
 \newcommand{\liuhao}{\fontsize{7.5pt}{11.25pt}\selectfont}
 % -----------------------------------------------------------------
-\LoadClass[UTF8,a4paper,cs4size,zihao=-4,linespread=1.625,space=auto,oneside]{ctexart}
-%\RequirePackage{ctex}
+\LoadClass[UTF8,a4paper,cs4size,zihao=-4,linespread=1.5,space=auto,oneside]{ctexart}
 % 正文内容，中文宋体，英文、数字和符号Times New Roman，小四号字，1.5倍行距，标准字间距。
 \RequirePackage{fontspec}
 %设置英文字体
@@ -67,12 +66,17 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 % 页面设置装订线留1厘米，位置在左边。页边距上下分别为3厘米、2.5厘米，左右分别为2厘米、2.5厘米。本模板已按要求设置好页面。
 % 设置页边距
 \RequirePackage{geometry}
+% 页面设置：
+% 上2.8厘米；下1.6厘米；左3.4厘米；右2厘米。
+% 页眉线1.5磅。装订线0厘米。页眉2厘米，页脚1.6厘米。
 \geometry{
-    a4paper,
-    top=3cm,
-    bottom=2.5cm,
-    left=3cm,
-    right=2.5cm
+    top=2.8cm,
+    bottom=1.6cm,
+    left=3.4cm,
+    right=2cm,
+    headheight=2cm,
+    footskip=1.6cm,
+    headsep=2em,
 }
 % 采用80克A4规格纸输出，从中文摘要页开始双面打印。
 % -----------------------------------------------------------------
@@ -81,58 +85,26 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 %% 设置章节前的页码格式
 \RequirePackage[pagestyles]{titlesec}
 \RequirePackage{fancyhdr}
-% 设置摘要的样式
-\newpagestyle{AbstractStyle}{
-  \fancyhf{}
-  \setfoot{}{\Roman{page}}{}
-}
-% 目录的第一页也设置为相同的样式
-\AtBeginDocument{\addtocontents{toc}{\protect\thispagestyle{AbstractStyle}}}
+% 设置文章的页眉页脚
 % 设置默认的页眉页脚样式
 \fancypagestyle{plain}{
     \fancyhf{}
-    \fancyfoot[C]{\songti\xiaowu 第 \thepage 页}
-    \fancyhead[L]{\songti\xiaowu 上海工程技术大学毕业设计（论文）}
+    \fancyfoot[C]{\songti\xiaowu \thepage }
+    \fancyhead[L]{\songti\sihao 上海工程技术大学毕业设计（论文）}
     \fancyhead[R]{\songti\xiaowu \suesthesis@value@ChineseTitle} 
 }
-
-%设置双线页眉
-%makeatletter
-%\def\headrule{
-%    {\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi%
-%    \hrule\@height 2.0pt \@width\headwidth\vskip1pt%上面线为1pt粗
-%    \hrule\@height 0.5pt \@width\headwidth  %下面0.5pt粗
-%    \vskip-2\headrulewidth\vskip-1.2pt}    %两条线的距离1pt
-%    \vspace{6mm}}     %双线与下面正文之间的垂直间距
-%\makeatother
-
-%设置双线页脚
-%\makeatletter
-%\def\footrule{
-%    {\if@fancyplain\let\footrulewidth\plainfootrulewidth\fi%
-%    \hrule\@height 0.5pt \@width\headwidth          %上面0.5pt粗
-%    \vskip 1pt
-%    \hrule\@height 2.0pt \@width\headwidth %下面线为1pt粗
-%    \vskip-2\headrulewidth\vskip-1.2pt}    %两条线的距离1pt
-%    \vspace{8mm}}     %双线与下面正文之间的垂直间距
-%\makeatother
-
+% 目录的第一页也设置为相同的样式
+\AtBeginDocument{\addtocontents{toc}{\protect\thispagestyle{plain}}}
 % -----------------------------------------------------------------
 \RequirePackage{titletoc}
 % 设置目录格式
-% 章节的目录格式
-\titlecontents{chapter}[0pt]{\vspace{2mm}\heiti\xiaosi}
-{\thecontentslabel\hskip.5em}{}{\titlerule*[0.5pc]{.}\contentspage}
-% 一级标题的目录格式
-\titlecontents{section}[30pt]{\heiti\wuhao}
-{\thecontentslabel\hskip.5em}{}{\titlerule*[0.5pc]{.}\contentspage}
-% 二级标题的目录格式
-\titlecontents{subsection}[55pt]{\heiti\wuhao}
-{\thecontentslabel\hskip.5em}{}{\titlerule*[0.5pc]{.}\contentspage}
-% 三级标题的目录格式
-\titlecontents{subsubsection}[55pt]{\heiti\wuhao}
-{\thecontentslabel\hskip.5em}{}{\titlerule*[0.5pc]{.}\contentspage}
-
+% latex 目录中只列出三级标题，标号为Times New Roman，汉字为宋体小四号字。行间距为1.5倍。汉字与标号间空一个字距。
+\titlecontents{section}[2em]{\vspace{0.5\baselineskip}\bfseries}{\thecontentslabel\quad}{}
+    {\titlerule*[8pt]{.}\contentspage}
+\titlecontents{subsection}[4em]{\vspace{0.25\baselineskip}}{\thecontentslabel\quad}{}
+    {\titlerule*[8pt]{.}\contentspage}
+\titlecontents{subsubsection}[6em]{\vspace{0.25\baselineskip}}{\thecontentslabel\quad}{}
+    {\titlerule*[8pt]{.}\contentspage}
 % -----------------------------------------------------------------
 % 设置每一个章节目录字体大小
 % 每章标题前空一行，以三号黑体居中打印。
@@ -141,21 +113,36 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 % “节”和“小节”标题的段前、段后各空0.5行。
 %设置文章格式
 \ctexset{
-    contentsname={目\quad 录},
+    contentsname={\centering\zihao{3}\heiti{目\quad 录}},
     listfigurename={插图},
     listtablename={表格},
     figurename={图},
     tablename={表},
     bibname={参考文献},
     appendixname={附\quad 录},
+    % 一级标题，中文宋体，英文、数字和符号Times New Roman，
+    % 加粗四号字。段前、段后均为0行。1.5倍行距。汉字与标号间空一个字距。与上面的学生姓名之间空一行。
     section={
-        format={\bfseries\heiti\xiaosi},
+        format=\raggedright\bfseries\songti\zihao{4},
+        beforeskip = 0pt,
+        afterskip = 0pt,
+        afterindent = true,
+        indent = 2em,
+        fixskip = true
     },
+    % 二级标题、三级标题，中文宋体，英文、数字和符号Times New Roman，
+    % 加粗小四号字。1.5倍行距。汉字与标号间空一个字距。顶格对齐打印。两数字间用插入符号中的圆点。
     subsection={
-        format={\bfseries\heiti\xiaosi},
+        format=\raggedright\bfseries\songti\zihao{-4},
+        aftername = \hspace{1em},
+        beforeskip = 0pt,
+        afterskip = 0pt,
     },
     subsubsection={
-        format={\bfseries\heiti\xiaosi},
+        format=\raggedright\bfseries\songti\zihao{-4},
+        aftername = \hspace{1em},
+        beforeskip = 0pt,
+        afterskip = 0pt,
     }
 }
 
@@ -176,7 +163,9 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 \renewcommand{\captionfont}{\zihao{5}\kaishu}
 \captionsetup[longtable]{name=表,labelsep=space}
 \captionsetup[table]{name=表,labelsep=space} %设置表的英文编号前缀
-\captionsetup[figure]{name=图,labelsep=space} %设置图片的英文编号前缀
+%设置图片的英文编号前缀
+% 宋体五号字，1.5倍行距，居中。图与上面文字间空一行。
+\captionsetup[figure]{name=图,labelsep=space, justification=centering, skip=1ex,font={small}} 
 % \DeclareBiCaptionSeparator{tmpbicaptionskip}{\vspace{3pt}}
 % \captionsetup{bi-separator=tmpbicaptionskip}
 % 这里设置表格使得在排版中按照最上浮动的浮动格式

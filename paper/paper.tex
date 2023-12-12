@@ -1,17 +1,21 @@
 \documentclass{suesthesis}
+% 定义论文的中文封面信息
 \begin{document}
-    \pagestyle{empty}
     % 论文中文封面
-    \input{chapters/cover.tex}
+    \input{chapters/cover}
     % 从这里开始生成目录部分页码
-    % 中文摘要和英文摘要
-    \input{chapters/abstract}
+    \pagestyle{plain}
+    \pagenumbering{arabic}
+    \setcounter{page}{1}
     %插入目录
     \tableofcontents
     \newpage
-    \pagestyle{AbstractStyle}
+    \pagenumbering{arabic}
+    \setcounter{page}{1}
+    % 中文摘要和英文摘要
+    \input{chapters/abstract}
     % 从这里开始生成文章部分页码
-    \pagestyle{plain}
+    \makeTitle
     % 第一章
     \input{chapters/ch01}
     % 第二章
