@@ -70,10 +70,10 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 % 上2.8厘米；下1.6厘米；左3.4厘米；右2厘米。
 % 页眉线1.5磅。装订线0厘米。页眉2厘米，页脚1.6厘米。
 \geometry{
-    top=2.8cm,
-    bottom=1.6cm,
-    left=3.4cm,
-    right=2cm,
+    top=3cm,
+    bottom=2.5cm,
+    left=3cm,
+    right=2.5cm,
     headheight=2cm,
     footskip=1.6cm,
     headsep=2em,
