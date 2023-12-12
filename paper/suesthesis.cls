@@ -1,6 +1,7 @@
+
 %依赖的Latex版本
 \NeedsTeXFormat{LaTeX2e}[2005/12/01]
-\ProvidesClass{suesthesis}[2022/11/11 v3.0 update  https://github.com/mobtgzhang/sues-thsis]
+\ProvidesClass{suesthesis}[2022/12/12 v1.0 update  https://github.com/MobtgZhang/sues-thesis-bachelor]
 %使用xelex进行编译
 \RequirePackage{ifxetex}
 \RequireXeTeX
@@ -82,7 +83,7 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 \RequirePackage{fancyhdr}
 % 设置摘要的样式
 \newpagestyle{AbstractStyle}{
-    \fancyhf{}
+  \fancyhf{}
   \setfoot{}{\Roman{page}}{}
 }
 % 目录的第一页也设置为相同的样式
@@ -91,8 +92,8 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 \fancypagestyle{plain}{
     \fancyhf{}
     \fancyfoot[C]{\songti\xiaowu 第 \thepage 页}
-    \fancyhead[L]{\songti\xiaowu 上海工程技术大学硕士学位论文}
-    \fancyhead[R]{\songti\xiaowu 第 \zhnum{chapter} 章 \quad\chaptertitle }
+    \fancyhead[L]{\songti\xiaowu 上海工程技术大学毕业设计（论文）}
+    \fancyhead[R]{\songti\xiaowu \suesthesis@value@ChineseTitle} 
 }
 
 %设置双线页眉
@@ -170,14 +171,14 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
     citecolor=black
 }
 % 双排表格、图表标题
-\RequirePackage[justification=centering]{bicaption}
+
 \RequirePackage[justification=centering]{caption}
 \renewcommand{\captionfont}{\zihao{5}\kaishu}
-\captionsetup[longtable][bi-second]{name=Table,labelsep=space}
-\captionsetup[table][bi-second]{name=Table,labelsep=space} %设置表的英文编号前缀
-\captionsetup[figure][bi-second]{name=Figure,labelsep=space} %设置图片的英文编号前缀
-\DeclareBiCaptionSeparator{tmpbicaptionskip}{\vspace{3pt}}
-\captionsetup{bi-separator=tmpbicaptionskip}
+\captionsetup[longtable]{name=表,labelsep=space}
+\captionsetup[table]{name=表,labelsep=space} %设置表的英文编号前缀
+\captionsetup[figure]{name=图,labelsep=space} %设置图片的英文编号前缀
+% \DeclareBiCaptionSeparator{tmpbicaptionskip}{\vspace{3pt}}
+% \captionsetup{bi-separator=tmpbicaptionskip}
 % 这里设置表格使得在排版中按照最上浮动的浮动格式
 %\makeatletter
 %\setlength{@fptop}{0pt}
@@ -196,9 +197,9 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 \crefname{equation}{式}{式}
 \renewcommand{\eqref}[1]{\labelcref{#1}~\namecref{#1}}
 % 定公式、图、表编号为"3-1"的形式，即分隔符由.变为短杠
-\renewcommand\theequation{\arabic{chapter}-\arabic{equation}}
-\renewcommand\thefigure{\arabic{chapter}-\arabic{figure}}
-\renewcommand\thetable{\arabic{chapter}-\arabic{table}}
+\renewcommand\theequation{\arabic{section}-\arabic{equation}}
+\renewcommand\thefigure{\arabic{section}-\arabic{figure}}
+\renewcommand\thetable{\arabic{section}-\arabic{table}}
 
 %各个章节重新引用定义
 %\crefname{section}{se}{}

@@ -1,29 +1,37 @@
 \documentclass{suesthesis}
-% 这里填写一些详细的信息
 \begin{document}
     \pagestyle{empty}
-    % 论文封面
-    \input{chapters/cover}
+    % 论文中文封面
+    \input{chapters/cover.tex}
+    % 从这里开始生成目录部分页码
+    % 中文摘要和英文摘要
+    \input{chapters/abstract}
     %插入目录
     \tableofcontents
     \newpage
-    % 从这里开始生成文章部分页码
     \pagestyle{AbstractStyle}
-    % 中文摘要和英文摘要
-    %\input{chapters/abstract}
+    % 从这里开始生成文章部分页码
+    \pagestyle{plain}
     % 第一章
-    \input{chapters/chp01}
+    \input{chapters/ch01}
     % 第二章
-    \input{chapters/chp02}
+    %\input{chapters/formula}
     % 第三章
-    \input{chapters/chp03}
+    \input{chapters/ch03}
     % 第四章
-    \input{chapters/chp04}
+    %\input{chapters/docref}
+    % 第五章
+    \input{chapters/ch05}
+    % 第六章
+    \input{chapters/refs}
     \appendix
+    \input{chapters/appendix}
     % 参考文献
-    \input{chapters/ref}
+    %\input{chapters/ref}
     % 附录
     %\input{chapters/appendix}
+    % 攻读硕士学位期间发表的论文
+    %\input{chapters/achievements}
     % 致谢
     %\input{chapters/thanks}
 \end{document}
