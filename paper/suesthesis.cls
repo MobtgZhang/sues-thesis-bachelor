@@ -238,6 +238,8 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 \RequirePackage{caption}
 % 设置插入的表格
 \RequirePackage{tabularx,array}
+% 具有不同颜色的表格
+\RequirePackage{colortbl}
 %% 长表格
 \RequirePackage{longtable}
 \RequirePackage{threeparttable}

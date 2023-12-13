@@ -1,0 +1,21 @@
+\section{交叉引用、链接}
+\subsection{交叉引用}
+这里的交叉引用指的是，需要再response.tex 中引用revision.tex的某一段文本，可以通过以下步骤实现：
+
+\begin{enumerate}[label=\arabic*]
+    \item 在 revision.tex 中，将需要引用的文本放在 \%<*tag> 和 \%</tag> 之间，即：
+    \begin{lstlisting}
+        %<*tag>
+        Here is the text to be cited.
+        %</tag>
+    \end{lstlisting}
+    \item 在 response.tex 中，利用 \verb|\ExecuteMetaData| 命令引用文本，
+
+    即：\verb|\ExecuteMetaData[revision]{tag}|
+
+    举个例子，正如我们在\cref{subsec:algorithms}中所说的“\ExecuteMetaData[chapters/ch03]{tag}”一样。
+\end{enumerate}
+\subsection{链接和其他引用}
+
+有一种在论文中脚注的方式进行引用，例如这里\footnote{这是一个脚注}。另外再说明一下链接的使用方法，例如本项目更新地址在我的\href{https://github.com/mobtgzhang/sues-thesis-bachelor}{GitHub}，
+当然可以将其放在脚注的地方也是不错的选择，这里需要注意的是脚注需要换行，文档模板中也定义了这些内容\footnote{\url{https://github.com/mobtgzhang/sues-thesis-bachelor}}。
