@@ -60,7 +60,7 @@ sudo fc-cache -fv
 ## overleaf 使用方法
 点击下面链接访问即可
 + [报告模板sues-report-bachelor]()；
-+ [论文模板sues-thesis-bachelor]()；
++ [论文模板sues-thesis-bachelor](https://www.overleaf.com/read/htvjtwdxnnrs#fd3590)；
 + [答辩sues-ppt-bachelor]()。
 
 overleaf 需要将源码导入到自己的项目当中，上述链接是只读模式，注意把编译设置为`xetex`编译选项，目前不支持`pdflatex`。
