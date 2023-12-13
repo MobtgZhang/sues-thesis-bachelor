@@ -11,9 +11,9 @@
 
 <table>
   <tr>
-    <td><img src="imgs/page1.png"></td>
-    <td><img src="imgs/page2.png"></td>
-    <td><img src="imgs/page3.png"></td>
+    <td><img src="imgs/page1.jpg"></td>
+    <td><img src="imgs/page2.jpg"></td>
+    <td><img src="imgs/page3.jpg"></td>
   </tr>
 </table>
 
