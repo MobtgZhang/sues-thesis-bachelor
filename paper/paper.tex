@@ -4,14 +4,11 @@
     % 论文中文封面
     \input{chapters/cover}
     % 从这里开始生成目录部分页码
-    \pagestyle{plain}
-    \pagenumbering{arabic}
-    \setcounter{page}{1}
+    \pagestyle{ContentStyle}
     %插入目录
     \tableofcontents
     \newpage
-    \pagenumbering{arabic}
-    \setcounter{page}{1}
+    \pagestyle{plain}
     % 中文摘要和英文摘要
     \input{chapters/abstract}
     % 从这里开始生成文章部分页码

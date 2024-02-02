@@ -92,9 +92,19 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
     \fancyfoot[C]{\songti\xiaowu \thepage }
     \fancyhead[L]{\songti\sihao 上海工程技术大学毕业设计（论文）}
     \fancyhead[R]{\songti\xiaowu \suesthesis@value@ChineseTitle} 
+    \setfoot{}{\arabic{page}}{}
+    \setcounter{page}{1}
+}
+% 设置摘要、目录的样式
+\newpagestyle{ContentStyle}{
+    \fancyhf{}
+    \fancyhead[L]{\songti\sihao 上海工程技术大学毕业设计（论文）}
+    \fancyhead[R]{\songti\xiaowu \suesthesis@value@ChineseTitle}
+    \setfoot{}{\Roman{page}}{}
+    \setcounter{page}{1}
 }
 % 目录的第一页也设置为相同的样式
-\AtBeginDocument{\addtocontents{toc}{\protect\thispagestyle{plain}}}
+\AtBeginDocument{\addtocontents{toc}{\protect\thispagestyle{ContentStyle}}}
 % -----------------------------------------------------------------
 \RequirePackage{titletoc}
 % 设置目录格式
@@ -189,7 +199,12 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 \renewcommand\theequation{\arabic{section}-\arabic{equation}}
 \renewcommand\thefigure{\arabic{section}-\arabic{figure}}
 \renewcommand\thetable{\arabic{section}-\arabic{table}}
-
+% 这里设置一下autoref方式的格式
+\renewcommand{\figureautorefname}{图}
+\renewcommand{\tableautorefname}{表}
+\renewcommand{\equationautorefname}{公式}
+\renewcommand{\sectionautorefname}{节}
+\newcommand{\algorithmautorefname}{算法}
 %各个章节重新引用定义
 %\crefname{section}{se}{}
 % -----------------------------------------------------------------
@@ -242,7 +257,7 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 \RequirePackage{colortbl}
 %% 长表格
 \RequirePackage{longtable}
-\RequirePackage{threeparttable}
+\RequirePackage{threeparttablex}
 % 用于插入表格当中斜线
 \RequirePackage{diagbox}
 % 设置插入的三线表
@@ -319,7 +334,7 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 		commentstyle=\songti\color{mComment},% 设置注释样式
         basicstyle=\footnotesize\fontspec{Consolas}, % 设置代码字体
         frame=shadowbox, % 阴影效果
-        rulesepcolor= \color{ red!20!green!20!blue!20} ,
+        rulesepcolor= \color{ red!20!green!20!blue!20},
 		#1
 	}
 }{}
@@ -361,6 +376,7 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
         frame=shadowbox, % 阴影效果
         rulesepcolor= \color{ red!20!green!20!blue!20} ,
         tabsize=4,
+        showstringspaces=false, % 不显示空格字符
         title=\lstname
 		#1
         % 
@@ -378,6 +394,7 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
         frame=shadowbox, % 阴影效果
         rulesepcolor= \color{ red!20!green!20!blue!20} ,
         tabsize=4,
+        showstringspaces=false, % 不显示空格字符
         title=\lstname
 		#1
         % 
@@ -394,6 +411,7 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
         frame=shadowbox, % 阴影效果
         rulesepcolor= \color{ red!20!green!20!blue!20} ,
         tabsize=4,
+        showstringspaces=false, % 不显示空格字符
         title=\lstname
 		#1
         % 
